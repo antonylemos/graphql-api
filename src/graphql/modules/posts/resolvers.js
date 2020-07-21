@@ -10,7 +10,11 @@ export default {
     post: (_, { id }) => Post.findById(id),
   },
   Mutation: {
-    createPost: (_, { data }) => Post.create(data),
+    createPost: (_, { data }) => {
+      const post = Post.create(data);
+
+      return post;
+    },
     updatePost: (_, { id, data }) =>
       Post.findOneAndUpdate(id, data, { new: true }),
     deletePost: async (_, { id }) => {
